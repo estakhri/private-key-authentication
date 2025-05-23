@@ -17,12 +17,12 @@ install_sshpass() {
     fi
 }
 
+install_sshpass
+
 read -p "Enter server address (e.g. 192.168.1.100): " SERVER
 read -p "Enter username: " USER
 read -sp "Enter password: " PASSWORD
 echo
-
-install_sshpass
 
 KEY_PATH="$HOME/.ssh/id_rsa"
 if [ ! -f "$KEY_PATH" ]; then
