@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+detect_os_and_run() {
+    case "$OSTYPE" in
+        linux*|darwin*)
+            echo "Detected OS: Linux/macOS"
+            bash "$(dirname "$0")/linux_mac_setup.sh"
+            ;;
+        msys*|cygwin*|win32*)
+            echo "Detected OS: Windows"
+            powershell.exe -ExecutionPolicy Bypass -File "$(dirname "$0")/windows_setup.ps1"
+            ;;
+        *)
+            echo "❌ Unsupported OS: $OSTYPE"
+            exit 1
+            ;;
+    esac
+}
+
+detect_os_and_run
